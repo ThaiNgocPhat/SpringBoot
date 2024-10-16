@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chỉnh sửa Sách</title>
+</head>
+<body>
+
+<h1>Chỉnh sửa Sách</h1>
+
+<!-- Form to Edit Existing Book -->
+<form th:action="@{/ss3/edit/{id}(id=${book.bookId})}" th:object="${book}" method="post">
+    <label for="editName">Tên Sách:</label>
+    <input type="text" id="editName" th:field="*{name}" placeholder="Chỉnh sửa tên sách" required/>
+
+    <label for="editPrice">Giá:</label>
+    <input type="number" id="editPrice" th:field="*{price}" placeholder="Chỉnh sửa giá" required/>
+
+    <label for="editStock">Số lượng tồn kho:</label>
+    <input type="number" id="editStock" th:field="*{stock}" placeholder="Chỉnh sửa số lượng" required/>
+
+    <label for="editCategoryName">Thể loại:</label>
+    <input type="text" id="editCategoryName" th:field="*{categoryName}" placeholder="Chỉnh sửa thể loại" required/>
+
+    <label for="editStatus">Trạng thái:</label>
+    <input type="checkbox" id="editStatus" th:field="*{status}"/> Còn hàng
+
+    <button type="submit">Lưu thay đổi</button>
+</form>
+
+<a href="/ss3">Quay lại danh sách sách</a>
+
+</body>
+</html>

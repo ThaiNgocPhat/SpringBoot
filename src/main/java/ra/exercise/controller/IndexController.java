@@ -1,8 +1,12 @@
 package ra.exercise.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ra.exercise.entity.ss3.Book;
+
+import java.util.List;
 
 @Controller
 @RequestMapping
@@ -23,10 +27,10 @@ public class IndexController {
         return "ss2/index";
     }
 
-    @GetMapping("ss3")
-    public String ss3() {
-        return "ss3/index";
-    }
+//    @GetMapping("ss3")
+//    public String ss3() {
+//        return "ss3/index";
+//    }
 
     @GetMapping("ss4")
     public String ss4() {

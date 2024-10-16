@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book List</title>
+</head>
+<body>
+<form th:action="@{/ss3}" method="get">
+    <input type="text" name="keyword" th:value="${keyword}" placeholder="Tìm kiếm sách..."/>
+    <button type="submit">Tìm kiếm</button>
+</form>
+<h1>Danh Sách Sách</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Tên Sách</th>
+        <th>Giá</th>
+        <th>Tồn Kho</th>
+        <th>Thể Loại</th>
+        <th>Trạng Thái</th>
+        <th>Hành Động</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${bookPage.content}">
+        <td th:text="${book.name}"></td>
+        <td th:text="${book.price}"></td>
+        <td th:text="${book.stock}"></td>
+        <td th:text="${book.categoryName}"></td>
+        <td th:text="${book.status ? 'Còn hàng' : 'Hết hàng'}"></td>
+        <td>
+            <a th:href="@{/ss3/edit/{id}(id=${book.bookId})}">Sửa</a>
+            <a th:href="@{/ss3/delete/{bookId}(bookId=${book.bookId})}">Xóa</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/ss3/add}">Thêm Sách</a>
+<a th:href="@{/}">Quay lại trang chủ</a>
+<div>
+    <span th:if="${bookPage.hasPrevious()}">
+        <a th:href="@{/ss3(page=${currentPage - 1}, size=${size}, sortBy=${sortBy}, keyword=${keyword})}">Trước</a>
+    </span>
+    <span th:if="${bookPage.hasNext()}">
+        <a th:href="@{/ss3(page=${currentPage + 1}, size=${size}, sortBy=${sortBy}, keyword=${keyword})}">Tiếp theo</a>
+    </span>
+</div>
+
+</body>
+</html>
